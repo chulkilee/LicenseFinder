@@ -9,7 +9,12 @@ module LicenseFinder
         "description" => "a description",
         "readme" => "a readme",
         "path" => "some/node/package/path",
-        "homepage" => "a homepage"
+        "homepage" => "a homepage",
+        "dependencies" => {
+          "coffee-script" => {
+            "name" => "coffee-script",
+          }
+        }
       )
     end
 
@@ -21,7 +26,7 @@ module LicenseFinder
     its(:description) { should == "a readme" }
     its(:homepage) { should == "a homepage" }
     its(:groups) { should == [] }
-    its(:children) { should == [] }
+    its(:children) { should == ["coffee-script"] }
 
     describe '#licenses' do
       def stub_license_files(license_files)
@@ -105,4 +110,3 @@ module LicenseFinder
     end
   end
 end
-

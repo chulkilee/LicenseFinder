@@ -26,7 +26,7 @@ module LicenseFinder
     end
 
     def children
-      [] # no way to determine child deps from npm (maybe?)
+      node_module.fetch("dependencies", {}).map { |k, d| d["name"] }
     end
 
     def groups
